@@ -7,7 +7,7 @@ export default function PokémonCard({pokemons}) {
     {
       pokemons && React.Children.toArray(pokemons.map((pokemon) => (
         <Pokémon 
-          pokemon={ pokemon.name } />
+          pokemon={ pokemon } />
       )))
     }
     </>
