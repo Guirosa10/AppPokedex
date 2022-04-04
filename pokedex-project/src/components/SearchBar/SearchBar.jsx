@@ -25,7 +25,7 @@ export default function SearchBar() {
 
 
   return (
-    <>
+    <div className='search-container'>
         <input 
             type='text' 
             placeholder='Search for Pokemon' 
@@ -37,6 +37,6 @@ export default function SearchBar() {
             value='Search Pokemon'
             onClick={ fetchNextPokemon }
         />
-    </>
+    </div>
   )
 };
