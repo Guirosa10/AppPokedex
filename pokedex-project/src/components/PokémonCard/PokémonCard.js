@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import MyContext from '../../Context/MyContext'
 import Pokémon from '../Pokémon/Pokémon'
 
-export default function PokémonCard({pokemons}) {
+export default function PokémonCard() {
+  const { pokemons } = useContext(MyContext)
   return (
     <>
     {

@@ -3,14 +3,13 @@ import MyContext from '../../Context/MyContext';
 import './SearchBar.css';
 import {fetchPokemonImage} from '../../services/PokemonFetch';
 
-export default function SearchBar({ setEnableNext }) {
+export default function SearchBar() {
   const { setPokemons } = useContext(MyContext);
   const [searchInput, setSearchInput] = useState('');
 
 
   const fetchNextPokemon = async () => {
       if(searchInput.length > 0){
-        setEnableNext(false)
         setPokemons([])
         const { results } = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1126').then((res) => res.json());
         const filteredPkms = results.filter((pokemonName) => pokemonName.name.includes(searchInput))
