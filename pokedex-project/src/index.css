@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://images6.alphacoders.com/884/thumb-1920-884402.jpg');
 }
 
 code {
@@ -17,4 +18,15 @@ header {
   flex-direction: column;
   align-items: center;
   margin: auto;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#00A0C6; 
+  text-decoration:none; 
+  cursor:pointer;  
 }

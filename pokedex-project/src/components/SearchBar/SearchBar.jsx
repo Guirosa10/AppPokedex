@@ -12,7 +12,7 @@ export default function SearchBar() {
       if(searchInput.length > 0){
         setPokemons([])
         const { results } = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1126').then((res) => res.json());
-        const filteredPkms = results.filter((pokemonName) => pokemonName.name.includes(searchInput))
+        const filteredPkms = results.filter((pokemonName) => pokemonName.name.includes(searchInput.toLowerCase()))
         const populatePokemon = (allPokemons) => {
             allPokemons.forEach(async (pokemon) => {
             const response = await fetchPokemonImage(pokemon.name)

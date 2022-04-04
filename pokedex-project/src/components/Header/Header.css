@@ -1,0 +1,15 @@
+.header-list{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+li {
+    margin: 10px;
+}
+
+.main-title {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 55px;
+}

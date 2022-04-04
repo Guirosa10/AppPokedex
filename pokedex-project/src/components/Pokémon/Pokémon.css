@@ -1,16 +1,56 @@
+
+
 .pokemon-card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid rgb(173, 168, 168);
+    margin: 15px;
+    border-radius: 10px 20px 15px;
+    box-shadow: 0 0 0 50px inset, 0 0 5px grey;
+    transition: box-shadow 1s;
+    position: inherit;
+}
+
+.pokemon-card:hover {
+    box-shadow: 0 0 0 5px inset, 0 0 5px grey, 0 0 10px grey inset;
+    transition: box-shadow 1s;
+    transform: scale(1.1);
+  }
+
+
+.card-grass {
+    background-image: url(../../images/leaf.png);
+}   
+
+.card-water {
+    background-image: url(../../images/water.png);
+}
+
+.card-fire {
+    background-image: url(../../images/fire.png);
+}
+
+.card-electric {
+    background-image: url(../../images/electric.jpg);
+    background-repeat: no-repeat;
+    background-size: 120%;
+}
+
+.card-steel {
+    background-image: url(../../images/metal.jpg);
+    background-repeat: no-repeat;
+    background-size: 120%;
 }
 
 .pokemon-card img{
-    max-width: 30vh;
+    width: 60vh;
 }
 
 .types-container {
     display: flex;
     flex-direction: row;
+    margin-bottom: 25px;
 }
 
 p {

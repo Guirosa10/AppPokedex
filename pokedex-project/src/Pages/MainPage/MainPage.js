@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Header from '../../components/Header/Header';
 /* import Filter from '../../components/Filters/Filter'; */
 import LoadNextButton from '../../components/LoadNextButton/LoadNextButton';
 import PokémonCard from '../../components/PokémonCard/PokémonCard';
-import SearchBar from '../../components/SearchBar/SearchBar';
 import MyContext from '../../Context/MyContext';
 import { fetchKantoDex } from '../../services/PokedexFetch';
 import { fetchPokemonImage } from '../../services/PokemonFetch';
 import './MainPage.css';
 
 export default function MainPage() {
-    const {pokemons, setPokemons} = useContext(MyContext);
+    const { setPokemons } = useContext(MyContext);
     const [next, setNext] = useState('');
 
     const fetchPokemons = async () => {
+        setPokemons([])
         const results = await fetchKantoDex()
         setNext(results.next);
 
@@ -31,16 +32,12 @@ export default function MainPage() {
 
   return (
       <>
-        <header>
-            <h1 className='main-title'>Pokédex App</h1>
-            {/* <Filter /> */}
-            <SearchBar />
-        </header>
+        <Header />
         <div className='pokedex-container'>
-            <PokémonCard pokemons={ pokemons }/>
+            <PokémonCard />
         </div>
         <div className='next-container'>
-                <LoadNextButton setNext={ setNext } next={ next }/>
+            <LoadNextButton setNext={ setNext } next={ next }/>
         </div>
         
       </>
