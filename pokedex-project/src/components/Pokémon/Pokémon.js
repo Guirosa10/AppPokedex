@@ -27,12 +27,14 @@ export default function Pokémon({ pokemon }) {
       <Link to={`/${pokemon.id}`} >
       <img 
         src={ image }
-        alt={ pokemon.name } />
+        alt={ pokemon.name }
+        className='pokemon-image'
+      />
       </Link>
       <div className='types-container' >
         {
           pokemon && pokemon.types.map((type) => (
-            <p className={ `${type.type.name} ` }>{ type.type.name }</p>
+            <p className={ `type ${type.type.name} ` }>{ type.type.name }</p>
           ))
         }
       </div>

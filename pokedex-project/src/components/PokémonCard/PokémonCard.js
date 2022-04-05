@@ -3,7 +3,8 @@ import MyContext from '../../Context/MyContext'
 import Pokémon from '../Pokémon/Pokémon'
 
 export default function PokémonCard() {
-  const { pokemons } = useContext(MyContext)
+  const { pokemons } = useContext(MyContext);
+
   return (
     <>
     {

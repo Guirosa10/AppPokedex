@@ -2,6 +2,7 @@
 
 .pokemon-card {
     display: flex;
+    min-width: 25%;
     flex-direction: column;
     align-items: center;
     border: 1px solid rgb(173, 168, 168);
@@ -15,9 +16,12 @@
 .pokemon-card:hover {
     box-shadow: 0 0 0 5px inset, 0 0 5px grey, 0 0 10px grey inset;
     transition: box-shadow 1s;
-    transform: scale(1.1);
   }
 
+.pokemon-image:hover {
+    transform: scale(1.1);
+    transition-duration: 1s;
+}
 
 .card-grass {
     background-image: url(../../images/leaf.png);
@@ -32,19 +36,57 @@
 }
 
 .card-electric {
-    background-image: url(../../images/electric.jpg);
-    background-repeat: no-repeat;
-    background-size: 120%;
+    background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
 }
 
 .card-steel {
-    background-image: url(../../images/metal.jpg);
-    background-repeat: no-repeat;
-    background-size: 120%;
+    background-image: linear-gradient(to right top, #786d6d, #7e7572, #847c78, #89847f, #8e8c87, #979893, #a1a4a1, #acb0ae, #bfc3c3, #d4d7d8, #eaebeb, #ffffff);
+}
+
+.card-bug {
+    background-image: linear-gradient(to right top, #cade43,  #f0cbe1, #ecc8dd, #a0bb41);
+}
+
+.card-normal {
+    background-image: linear-gradient(to right top, #94dfee, #95d2d3, #99c5bb, #9cb6a9, #9ca89c, #a0aba3, #a6aea9, #acb0ae, #bfc3c3, #d4d7d8, #eaebeb, #ffffff);
+}
+
+.card-poison {
+    background-image: linear-gradient(to right top, #a8458f, #a94c95, #aa539b, #ab5aa1, #ac60a7, #af6aac, #b174b1, #b47db5, #b98cba, #be9bbe, #c3aac3, #c7b9c7);
+}
+
+.card-fairy {
+    background-image: linear-gradient(to right top, #e523ee, #e236e9, #df44e4, #db4fdf, #d859da, #da6adb, #db7adc, #dc89dd, #e2a3e3, #e8bce8, #edd5ed, #f2edf2);
+}
+
+.card-ground {
+    background-image: linear-gradient(to left top, #b98511, #bc8d2d, #be9542, #c19c55, #c3a468, #c6a76e, #c8a973, #cbac79, #cfab73, #d2a96d, #d6a868, #daa662);
+}
+
+.card-fighting {
+    background-image: radial-gradient(circle, #a60000, #ad1f19, #b4312d, #b8423f, #bc5151);
+}
+
+.card-rock {
+    background-image: linear-gradient(to left top, #967656, #926e45, #8c6734, #866022, #7e5a0b);
+}
+
+.card-fairy {
+    background: rgb(216,14,218);
+    background: linear-gradient(90deg, rgba(216,14,218,1) 0%, rgba(201,70,227,1) 35%, rgba(255,0,146,1) 100%);
+}
+
+.card-psychic {
+    background: rgb(245,17,98);
+    background: linear-gradient(90deg, rgba(245,17,98,1) 0%, rgba(235,61,207,1) 35%, rgba(125,10,109,1) 100%);
 }
 
 .pokemon-card img{
     width: 60vh;
+}
+
+.card-ice {
+    background-image: linear-gradient(to right top, rgb(60, 210, 236), rgb(94, 225, 230), rgb(148, 148, 228));
 }
 
 .types-container {
@@ -53,21 +95,27 @@
     margin-bottom: 25px;
 }
 
-p {
-    margin: 5px;
-    border: 1px solid black;
-    border-radius: 0px 5px 0px 10px;
-    padding: 5px;
+.type{
+    margin: 10px;
+	padding: 15px 18px 15px 18px;
+	display: inline-block;
+	border-radius: 6px;
+	-webkit-border-radius: 6px; 
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
+	font-size: 13px;
+	font-family: "helvetica neue", Helvetica, Verdana, sans-serif;
+	color: rgb(49, 48, 48);
+	background-color: #68A090;
+	border: 1px solid #44685E;
 }
 
 .grass {
     background-color: #8ED479
-    
-    
 }
 
 .poison {
-    background-color: #AE88CF;
+    background-image: linear-gradient(to right top, #a8458f, #a94c95, #aa539b, #ab5aa1, #ac60a7, #af6aac, #b174b1, #b47db5, #b98cba, #be9bbe, #c3aac3, #c7b9c7);
 }
 
 .fire {
@@ -79,7 +127,8 @@ p {
 }
 
 .water {
-    background-color: rgb(124, 194, 252);
+	background-color: #6890F0;
+	border: 1px solid #445E9C;
 }
 
 .bug {
@@ -95,7 +144,7 @@ p {
 }
 
 .fairy {
-    background-color: #f7b2ea;
+    background-image: linear-gradient(to right top, #e523ee, #e236e9, #df44e4, #db4fdf, #d859da, #da6adb, #db7adc, #dc89dd, #e2a3e3, #e8bce8, #edd5ed, #f2edf2);
 }
 
 .fighting {
@@ -109,4 +158,21 @@ p {
 
 .psychic {
     background-color: rgb(187, 93, 187);
+}
+
+.steel {
+    background-image: linear-gradient(to right, #786d6d, #7e7572, #847c78, #89847f, #8e8c87, #979893, #a1a4a1, #acb0ae, #bfc3c3, #d4d7d8, #eaebeb, #ffffff);
+}
+
+.normal {
+    background-image: linear-gradient(to right top, #94dfee, #95d2d3, #99c5bb, #9cb6a9, #9ca89c, #a0aba3, #a6aea9, #acb0ae, #bfc3c3, #d4d7d8, #eaebeb, #ffffff);
+}
+
+.ice {
+    background-image: linear-gradient(to right top, rgb(60, 210, 236), rgb(94, 225, 230), rgb(148, 148, 228));
+}
+
+.rock {
+    background: rgb(129,70,7);
+    background: linear-gradient(to right top, rgba(129,70,7,1) 0%, rgba(203,118,14,1) 35%, rgba(126,101,50,1) 100%);
 }

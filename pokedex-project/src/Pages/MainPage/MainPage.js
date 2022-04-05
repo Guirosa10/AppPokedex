@@ -9,7 +9,7 @@ import { fetchPokemonImage } from '../../services/PokemonFetch';
 import './MainPage.css';
 
 export default function MainPage() {
-    const { setPokemons } = useContext(MyContext);
+    const { pokemons,setPokemons } = useContext(MyContext);
     const [next, setNext] = useState('');
 
     const fetchPokemons = async () => {
@@ -19,8 +19,8 @@ export default function MainPage() {
 
         const populatePokemon = (allPokemons) => {
             allPokemons.forEach(async (pokemon) => {
-                const response = await fetchPokemonImage(pokemon.name)
-                setPokemons((allpokes) => [...allpokes, response])
+                const response = await fetchPokemonImage(pokemon.name);
+                setPokemons((allpokes) => [...allpokes, response]);
             })
         }
         populatePokemon(results.results)

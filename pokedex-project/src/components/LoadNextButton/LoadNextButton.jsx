@@ -4,7 +4,7 @@ import { fetchPokemonImage } from '../../services/PokemonFetch';
 import './LoadNextButton.css';
 
 export default function LoadNextButton({ setNext, next }) {
-  const { setPokemons } = useContext(MyContext);
+  const { pokemons, setPokemons } = useContext(MyContext);
 
   const fetchNextPokemon = async () => {
     const results = await fetch(next).then((res) => res.json())
@@ -16,6 +16,8 @@ export default function LoadNextButton({ setNext, next }) {
       })
     }
     populatePokemon(results.results)
+    const sort = pokemons.sort((a,b) => a.id - b.id);
+    setPokemons(sort);
   }
 
   return (
