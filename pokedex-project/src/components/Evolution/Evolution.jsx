@@ -25,9 +25,8 @@ function Evolution({pokemon}) {
             pokemonEvo.name === pokemon && (
                 <Link to={`/${pokemonEvo.id}`}>
                     <img 
-                    className='evolution-chain'
-                    src={ pokemonEvo.sprites.other['official-artwork'].front_default } alt={pokemonEvo.name}>
-                 
+                        className='evolution-chain'
+                        src={ pokemonEvo.sprites.other['official-artwork'].front_default } alt={pokemonEvo.name}>
                     </img>
                 </Link>
             )
