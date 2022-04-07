@@ -11,9 +11,9 @@ export default function Favorites() {
         {
             pokemons && pokemons.map((pokemon) => (
                 <div className={`pokemon-card card-${pokemon.types[0]}`}>
-                    <Link to={`/${pokemon.id}`}><h1>{ pokemon.name }</h1></Link>
+                    <Link to={`/pokemon/${pokemon.id}`}><h1>{ pokemon.name }</h1></Link>
                     <h2>{ `#${pokemon.id}` }</h2>
-                    <Link to={`/${pokemon.id}`}>
+                    <Link to={`/pokemon/${pokemon.id}`}>
                         <img 
                             src={ pokemon.sprite }
                             alt={ pokemon.name }
