@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import EvolutionContainer from '../../components/EvolutionContainer/EvolutionContainer';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import Header from '../../components/Header/Header';
+import Loading from '../../components/Loading/Loading';
 import MyContext from '../../Context/MyContext';
 import './PokémonDetail.css';
 
@@ -10,6 +11,7 @@ export default function PokémonDetail() {
   const { id } = useParams();
   const { pokemonDetail, setPokemonDetail } = useContext(MyContext);
   const [image, setImage] = useState('');
+  const [loadingState, setLoadingState] = useState(false)
  
   const fetchDetails = async () => {
       const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => res.json())
@@ -21,12 +23,21 @@ export default function PokémonDetail() {
  
 
   useEffect(() => {
-      fetchDetails()
+    setLoadingState(true)
+    fetchDetails()
+    setTimeout(() => {
+      setLoadingState(false)
+    }, 1500)
   }, [id])
 
   return (
     <>
       <Header />
+        {
+          loadingState && (
+            <Loading />
+          )
+        }
         {
             pokemonDetail && (
                   <div className='pokemon-detail-card'>
@@ -35,15 +46,18 @@ export default function PokémonDetail() {
                         <h1 className='details-title'>{ pokemonDetail.name }</h1>
                         <FavoriteButton />
                       </div>
-                      <img src={ image } alt={ pokemonDetail.name } />
+                      <img
+                        className='detail-image-container'
+                        src={ image } 
+                        alt={ pokemonDetail.name } />
                       <div className='type-container'>
                         {
-                        pokemonDetail.types?.map((type) => (
-                          <p
-                          key={ type.type.name }
-                          className={ `${type.type.name} ` }>{ type.type.name }
-                          </p>
-                        ))
+                          pokemonDetail.types?.map((type) => (
+                            <p
+                            key={ type.type.name }
+                            className={ `${type.type.name} ` }>{ type.type.name }
+                            </p>
+                          ))
                         }
                       </div>
                     </div>
@@ -67,12 +81,12 @@ export default function PokémonDetail() {
                   </div>
             )
         }
-        <Link to={ id > 1 ? `/${id - 1}` : `/${id}`}>
+        <Link to={ id > 1 ? `/pokemon/${id - 1}` : `/pokemon/${id}`}>
           <button className='next-button' type='button' >
             Previous
           </button>
         </Link>
-        <Link to={ `/${ Number(id) + 1 }`}>
+        <Link to={ `/pokemon/${ Number(id) + 1 }`}>
           <button className='next-button' type='button' >
             Next
           </button>

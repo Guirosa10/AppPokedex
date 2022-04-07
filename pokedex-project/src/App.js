@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<MainPage />}  />
           <Route exact path='/search' element={ <SearchPage /> } />
-          <Route exact path='/:id' element={ <PokémonDetail /> } />
+          <Route exact path='/pokemon/:id' element={ <PokémonDetail /> } />
           <Route exact path='/favorites' element={ <Favorites /> } />
         </Routes>
       </BrowserRouter>

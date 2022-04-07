@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
+import Loading from '../../components/Loading/Loading';
 /* import Filter from '../../components/Filters/Filter'; */
 import LoadNextButton from '../../components/LoadNextButton/LoadNextButton';
 import PokémonCard from '../../components/PokémonCard/PokémonCard';
@@ -11,8 +12,10 @@ import './MainPage.css';
 export default function MainPage() {
     const { setPokemons } = useContext(MyContext);
     const [next, setNext] = useState('');
+    const [loadingState, setLoadingState]=useState(false);
 
     const fetchPokemons = async () => {
+        setLoadingState(true);
         setPokemons([])
         const results = await fetchKantoDex()
         setNext(results.next);
@@ -24,6 +27,9 @@ export default function MainPage() {
             })
         }
         populatePokemon(results.results)
+        setTimeout(() => {
+            setLoadingState(false);
+        }, 1500)
     }
 
     useEffect(() => {
@@ -33,6 +39,11 @@ export default function MainPage() {
   return (
       <>
         <Header />
+        {
+            loadingState && (
+                <Loading />
+            )
+        }
         <div className='pokedex-container'>
             <PokémonCard />
         </div>

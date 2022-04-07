@@ -20,11 +20,11 @@ export default function Pokémon({ pokemon }) {
 
   return (
     <div className={ `pokemon-card card-${pokemon.types[0].type.name}` }>
-      <Link to={`/${pokemon.id}`} >
+      <Link to={`/pokemon/${pokemon.id}`} >
         <h1 className='pokemon-name'>{ upperCaseFirstLetter(pokemon.name) }</h1>
       </Link>
       <h2>{ `#${pokemon.id}` }</h2>
-      <Link to={`/${pokemon.id}`} >
+      <Link to={`/pokemon/${pokemon.id}`} >
       <img 
         src={ image }
         alt={ pokemon.name }
