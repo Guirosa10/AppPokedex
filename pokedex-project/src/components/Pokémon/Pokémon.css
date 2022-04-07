@@ -71,7 +71,8 @@
 }
 
 .card-ground {
-    background-image: linear-gradient(to left top, #b98511, #bc8d2d, #be9542, #c19c55, #c3a468, #c6a76e, #c8a973, #cbac79, #cfab73, #d2a96d, #d6a868, #daa662);
+    background-image: url(../../images/ground1);
+    background-size: cover;
 }
 
 .card-fighting {
