@@ -21,7 +21,7 @@ export default function Pokémon({ pokemon }) {
   return (
     <div className={ `pokemon-card card-${pokemon.types[0].type.name}` }>
       <Link to={`/${pokemon.id}`} >
-        <h1>{ upperCaseFirstLetter(pokemon.name) }</h1>
+        <h1 className='pokemon-name'>{ upperCaseFirstLetter(pokemon.name) }</h1>
       </Link>
       <h2>{ `#${pokemon.id}` }</h2>
       <Link to={`/${pokemon.id}`} >

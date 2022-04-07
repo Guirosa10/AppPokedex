@@ -4,4 +4,7 @@ export const fetchPokemonImage = async (pokemonName) => {
     return results;
 };
 
-// sprites.other['official-artwork'].front_default;
+export const fetchBySpecies = async (param) => {
+  const { evolution_chain } = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${param}`).then((res) => res.json());
+  return evolution_chain.url;
+};

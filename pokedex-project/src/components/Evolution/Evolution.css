@@ -1,0 +1,14 @@
+.evolution-chain {
+    max-width: 50px;
+    max-height: 50px;
+    margin: 15px;
+    border: 4px solid black;
+    border-radius: 10%;
+    background-color: white;
+}
+
+.evolution-chain div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

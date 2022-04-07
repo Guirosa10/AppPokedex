@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import EvolutionContainer from '../../components/EvolutionContainer/EvolutionContainer';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import Header from '../../components/Header/Header';
+import MyContext from '../../Context/MyContext';
+import './PokémonDetail.css';
 
 export default function PokémonDetail() {
   const { id } = useParams();
-  const [pokemonDetail, setPokemonDetail] = useState([])
+  const { pokemonDetail, setPokemonDetail } = useContext(MyContext);
   const [image, setImage] = useState('');
  
   const fetchDetails = async () => {
@@ -19,43 +22,61 @@ export default function PokémonDetail() {
 
   useEffect(() => {
       fetchDetails()
-  }, [])
+  }, [id])
 
   return (
     <>
       <Header />
         {
             pokemonDetail && (
-                <>
-                  <div>
-                  <h1>{ pokemonDetail.name }</h1>
-                  <FavoriteButton pokemonDetail={ pokemonDetail }/>
-                  </div>
-                  <p>{ pokemonDetail.height*10 }{' '}{ 'cm' }</p>
-                  <p>{ pokemonDetail.weight/10 }{' '}{ 'kg' }</p>
-                  <img src={ image } alt={ pokemonDetail.name } />
-                  <div>
-                    {
-                    pokemonDetail.abilities?.map((abi) => <p key={abi.ability.name}>{ abi.is_hidden === true ? ' Hidden ability : ' : 'Regular Ability : ' }{abi.ability.name}</p> )
-                    }
-                  </div>
-                  
-                  <div>
+                  <div className='pokemon-detail-card'>
+                    <div className='pokemon-and-details' >
+                      <div className='pokemon-detail-name-container'>
+                        <h1>{ pokemonDetail.name }</h1>
+                        <FavoriteButton />
+                      </div>
+                      <img src={ image } alt={ pokemonDetail.name } />
+                      <div className='type-container'>
                         {
-                            pokemonDetail.stats?.map((stat) => 
-                              <p key={stat.stat.name}>{ `${ stat.stat.name } ${stat.base_stat}` }</p>)
+                        pokemonDetail.types?.map((type) => (
+                          <p
+                          key={ type.type.name }
+                          className={ `${type.type.name} ` }>{ type.type.name }
+                          </p>
+                        ))
                         }
+                      </div>
+                    </div>
+                    <div>
+                      {
+                      pokemonDetail.abilities?.map((abi) => <p key={abi.ability.name}>{ abi.is_hidden === true ? ' Hidden ability : ' : 'Regular Ability : ' }{abi.ability.name}</p> )
+                      }
+                    </div>
+                  
+                    <div>
+                          {
+                              pokemonDetail.stats?.map((stat) => 
+                                <p key={stat.stat.name}>{ `${ stat.stat.name } ${stat.base_stat}` }</p>)
+                          }
+                    </div>
+                    <div className='evolutions-container'>
+                      <EvolutionContainer id={ id } />
+                      <p>Height:{' '}{ pokemonDetail.height/10 }{' '}{ 'm' }</p>
+                      <p>Weight{' '}{ pokemonDetail.weight/10 }{' '}{ 'kg' }</p>
+                    </div>
                   </div>
-                  {
-                    pokemonDetail.types?.map((type) => (
-                    <p 
-                      key={ type.type.name }
-                      className={ `${type.type.name} ` }>{ type.type.name }</p>
-                    ))
-                  }
-                </>
             )
         }
+        <Link to={ id > 1 ? `/${id - 1}` : `/${id}`}>
+          <button className='next-button' type='button' >
+            Previous
+          </button>
+        </Link>
+        <Link to={ `/${ Number(id) + 1 }`}>
+          <button className='next-button' type='button' >
+            Next
+          </button>
+        </Link>
     </>
   )
 };

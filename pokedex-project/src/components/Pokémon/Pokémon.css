@@ -13,6 +13,10 @@
     position: inherit;
 }
 
+.pokemon-name {
+    margin-top: 45px;
+}
+
 .pokemon-card:hover {
     box-shadow: 0 0 0 5px inset, 0 0 5px grey, 0 0 10px grey inset;
     transition: box-shadow 1s;
@@ -21,6 +25,11 @@
 .pokemon-image:hover {
     transform: scale(1.1);
     transition-duration: 1s;
+}
+
+.card-ghost {
+    background: rgb(104,60,147);
+    background: linear-gradient(to right top, rgba(104,60,147,1) 0%, rgba(173,49,230,1) 35%, rgba(235,29,202,1) 100%);
 }
 
 .card-grass {

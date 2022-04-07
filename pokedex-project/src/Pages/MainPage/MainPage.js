@@ -9,7 +9,7 @@ import { fetchPokemonImage } from '../../services/PokemonFetch';
 import './MainPage.css';
 
 export default function MainPage() {
-    const { pokemons,setPokemons } = useContext(MyContext);
+    const { setPokemons } = useContext(MyContext);
     const [next, setNext] = useState('');
 
     const fetchPokemons = async () => {

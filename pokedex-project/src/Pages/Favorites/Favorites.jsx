@@ -13,11 +13,13 @@ export default function Favorites() {
                 <div className={`pokemon-card card-${pokemon.types[0]}`}>
                     <Link to={`/${pokemon.id}`}><h1>{ pokemon.name }</h1></Link>
                     <h2>{ `#${pokemon.id}` }</h2>
-                    <img 
-                        src={ pokemon.sprite }
-                        alt={ pokemon.name }
-                        className='pokemon-image'
-                    />
+                    <Link to={`/${pokemon.id}`}>
+                        <img 
+                            src={ pokemon.sprite }
+                            alt={ pokemon.name }
+                            className='pokemon-image'
+                        />
+                    </Link>
                     <div className='types-container' >
                         {
                             pokemon && pokemon.types.map((type) => (
