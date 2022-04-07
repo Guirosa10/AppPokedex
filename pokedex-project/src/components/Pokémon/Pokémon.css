@@ -101,7 +101,13 @@
 }
 
 .card-dragon {
-    background-image: url(../../images/dragon);
+    background-image: url(../../images/dragon6);
+    background-size: cover;
+}
+
+.card-flying {
+    background-image: url(../../images/voador1);
+    background-size: cover;
 }
 
 .types-container {
