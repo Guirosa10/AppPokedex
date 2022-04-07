@@ -27,7 +27,7 @@ export default function PokémonDetail() {
     fetchDetails()
     setTimeout(() => {
       setLoadingState(false)
-    }, 1500)
+    }, 1000)
   }, [id])
 
   return (

@@ -29,7 +29,7 @@ export default function MainPage() {
         populatePokemon(results.results)
         setTimeout(() => {
             setLoadingState(false);
-        }, 1500)
+        }, 1000)
     }
 
     useEffect(() => {
