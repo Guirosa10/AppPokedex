@@ -32,7 +32,7 @@ export default function PokémonDetail() {
                   <div className='pokemon-detail-card'>
                     <div className='pokemon-and-details' >
                       <div className='pokemon-detail-name-container'>
-                        <h1>{ pokemonDetail.name }</h1>
+                        <h1 className='details-title'>{ pokemonDetail.name }</h1>
                         <FavoriteButton />
                       </div>
                       <img src={ image } alt={ pokemonDetail.name } />
@@ -49,14 +49,14 @@ export default function PokémonDetail() {
                     </div>
                     <div>
                       {
-                      pokemonDetail.abilities?.map((abi) => <p key={abi.ability.name}>{ abi.is_hidden === true ? ' Hidden ability : ' : 'Regular Ability : ' }{abi.ability.name}</p> )
+                        pokemonDetail.abilities?.map((abi) => <p key={abi.ability.name}>{ abi.is_hidden === true ? ' Hidden ability : ' : 'Regular Ability : ' }{abi.ability.name}</p> )
                       }
                     </div>
                   
                     <div>
                           {
-                              pokemonDetail.stats?.map((stat) => 
-                                <p key={stat.stat.name}>{ `${ stat.stat.name } ${stat.base_stat}` }</p>)
+                            pokemonDetail.stats?.map((stat) => 
+                              <p key={stat.stat.name}>{ `${ stat.stat.name } ${stat.base_stat}` }</p>)
                           }
                     </div>
                     <div className='evolutions-container'>

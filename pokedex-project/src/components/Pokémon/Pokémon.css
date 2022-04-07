@@ -28,8 +28,8 @@
 }
 
 .card-ghost {
-    background: rgb(104,60,147);
-    background: linear-gradient(to right top, rgba(104,60,147,1) 0%, rgba(173,49,230,1) 35%, rgba(235,29,202,1) 100%);
+    background-image: url(../../images/ghost);
+    background-size: cover;
 }
 
 .card-grass {
@@ -45,7 +45,9 @@
 }
 
 .card-electric {
-    background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+    background: url(../../images/electric3);
+
+    background-size: cover;
 }
 
 .card-steel {
@@ -96,6 +98,10 @@
 
 .card-ice {
     background-image: linear-gradient(to right top, rgb(60, 210, 236), rgb(94, 225, 230), rgb(148, 148, 228));
+}
+
+.card-dragon {
+    background-image: url(../../images/dragon);
 }
 
 .types-container {

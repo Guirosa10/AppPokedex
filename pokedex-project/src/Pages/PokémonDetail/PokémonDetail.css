@@ -3,10 +3,13 @@
     margin: 8%;
     align-items: center;
     justify-content: space-around;
-    flex-direction: row;
+    flex-direction: row-reverse;
     height: 80vh;
     border: 20px solid black;
-    background-image: linear-gradient(white, gray, silver);
+    background-image: url(../../images/smoochum-hd-iphone-12-pro-max.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-image: linear-gradient(to left top,white, gray, silver); */
 }
 
 .pokemon-detail-name-container {
@@ -42,4 +45,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.details-title {
+    color: rgb(255, 255, 255);
 }
