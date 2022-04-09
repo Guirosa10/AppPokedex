@@ -1,3 +1,4 @@
+/* eslint-disable no-control-regex */
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import EvolutionContainer from '../../components/EvolutionContainer/EvolutionContainer';
@@ -12,12 +13,15 @@ export default function PokémonDetail() {
   const { pokemonDetail, setPokemonDetail } = useContext(MyContext);
   const [image, setImage] = useState('');
   const [loadingState, setLoadingState] = useState(false)
+  const [bio, setBio] = useState('')
  
   const fetchDetails = async () => {
-      const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => res.json())
-      setPokemonDetail(results)
+      const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => res.json());
+      const { flavor_text_entries } = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) => res.json());
+      setPokemonDetail(results);
+      setBio(flavor_text_entries[0].flavor_text);
       const imageArtwork = results.sprites.other['official-artwork'].front_default;
-      setImage(imageArtwork)
+      setImage(imageArtwork);
   }
 
  
@@ -25,9 +29,7 @@ export default function PokémonDetail() {
   useEffect(() => {
     setLoadingState(true)
     fetchDetails()
-    setTimeout(() => {
-      setLoadingState(false)
-    }, 1000)
+    setLoadingState(false)
   }, [id])
 
   return (
@@ -39,8 +41,11 @@ export default function PokémonDetail() {
           )
         }
         {
-            pokemonDetail && (
+            !loadingState && (
                   <div className='pokemon-detail-card'>
+                    <div>
+                      
+                    </div>
                     <div className='pokemon-and-details' >
                       <div className='pokemon-detail-name-container'>
                         <h1 className='details-title'>{ pokemonDetail.name }</h1>
@@ -61,22 +66,47 @@ export default function PokémonDetail() {
                         }
                       </div>
                     </div>
-                    <div>
-                      {
-                        pokemonDetail.abilities?.map((abi) => <p key={abi.ability.name}>{ abi.is_hidden === true ? ' Hidden ability : ' : 'Regular Ability : ' }{abi.ability.name}</p> )
+                    <div className='info-container'>
+                      <div className="bio-container">
+                        <h2>Bio</h2>
+                      { 
+                        <p>{ bio.replace(//g, '') }</p> 
                       }
-                    </div>
-                  
-                    <div>
-                          {
-                            pokemonDetail.stats?.map((stat) => 
-                              <p key={stat.stat.name}>{ `${ stat.stat.name } ${stat.base_stat}` }</p>)
-                          }
-                    </div>
-                    <div className='evolutions-container'>
-                      <EvolutionContainer id={ id } />
+                      <h2>Abilities</h2>
+                      {
+                        pokemonDetail.abilities?.map((abi) => 
+                          <p key={abi.ability.name}>{ abi.is_hidden === true ? `${abi.ability.name} (hidden)` : abi.ability.name }{}</p> )
+                      }
                       <p>Height:{' '}{ pokemonDetail.height/10 }{' '}{ 'm' }</p>
                       <p>Weight{' '}{ pokemonDetail.weight/10 }{' '}{ 'kg' }</p>
+                      </div>
+                      
+                       <div className='stats-container'>
+                          {
+                            pokemonDetail.stats?.map((stat) => (
+                              <>
+                                <p>
+                                  {
+                                     stat.stat.name 
+                                  }
+                                </p>
+                                <p 
+                                  key={stat.stat.name}
+                                  className='stats-bar'
+                                  style={{width : `${stat.base_stat}%`}}
+                                >{  stat.base_stat }
+                                </p>
+                              </>)
+                              )
+                          }
+                      </div>
+                   
+                    </div>
+                  
+                   
+                    <div className='evolutions-container'>
+                      <EvolutionContainer id={ id } />
+                      
                     </div>
                   </div>
             )

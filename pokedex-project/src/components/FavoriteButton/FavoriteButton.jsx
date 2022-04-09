@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import MyContext from '../../Context/MyContext';
+import './FavoriteButton.css';
 
 export default function FavoriteButton() {
   const [favorites, setFavorites] = useState([]);
@@ -59,14 +60,24 @@ export default function FavoriteButton() {
   }, [favorites])
 
   return (
-    <button 
+    <span
         type='button'
         onClick={ handleClick }
     >
       {
-        favoriteIcon ? <i className="gg-heart"></i> : <i className="gg-pokemon"></i>
+        favoriteIcon ? <img 
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1026px-Pok%C3%A9_Ball_icon.svg.png' 
+          className="heart"
+          alt='heart'
+          /> : 
+          <img 
+            alt='favorited' 
+            src='https://cdn.icon-icons.com/icons2/2248/PNG/512/pokeball_icon_136305.png' 
+            className='favorited'
+          />
       }
       
-    </button>
+    </span>
   )
 };
+

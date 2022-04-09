@@ -1,0 +1,41 @@
+.favorited {
+    max-width: 60px;
+    max-height: 60px;
+    animation: rotation 1s linear infinite;
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg)
+        }
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+}
+
+.favorited:hover {
+    cursor: pointer;
+    
+}
+
+.heart::before {
+    background:transparent;
+}
+
+.heart {
+    background:transparent;
+    max-width: 60px;
+    max-height: 60px;
+    animation: rotation 1s linear infinite;
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg)
+        }
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+}
+
+.heart:hover {
+    cursor: pointer;
+}

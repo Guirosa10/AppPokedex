@@ -40,17 +40,25 @@ export default function MainPage() {
       <>
         <Header />
         {
-            loadingState && (
+            loadingState && 
+            (
                 <Loading />
             )
         }
-        <div className='pokedex-container'>
-            <PokémonCard />
-        </div>
-        <div className='next-container'>
-            <LoadNextButton setNext={ setNext } next={ next }/>
-        </div>
-        
+        {
+            !loadingState && (
+                <>
+                    <div className='pokedex-container'>
+                        <PokémonCard />
+                    </div>
+                    <div className='next-container'>
+                        <LoadNextButton setNext={ setNext } next={ next }/>
+                    </div>
+                </>
+            
+            )
+        }
+       
       </>
   )
 };
