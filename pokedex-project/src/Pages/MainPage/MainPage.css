@@ -8,13 +8,11 @@
 .next-container {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-top: 15px;
 }
 
-button {
-    align-self: center;
-    margin: auto;
-}
-
-h1 {
+.main-title {
     text-align: center;
+    font-size: 100px;
 }

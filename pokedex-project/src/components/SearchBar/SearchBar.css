@@ -9,6 +9,12 @@ input {
     flex-direction: row;
     gap: left 40%;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     margin-bottom: 30px;
+}
+
+.search-container input {
+    height: 5vh;
+    width: 25vh;
+    font-size: large;
 }

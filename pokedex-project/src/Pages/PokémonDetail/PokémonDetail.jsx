@@ -24,6 +24,14 @@ export default function PokémonDetail() {
       setImage(imageArtwork);
   }
 
+ const upperCaseFirstLetter = (string) => {
+   if(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+   }
+   return string;
+  }
+
+
  
 
   useEffect(() => {
@@ -43,18 +51,17 @@ export default function PokémonDetail() {
         {
             !loadingState && (
                   <div className='pokemon-detail-card'>
-                    <div>
-                      
-                    </div>
                     <div className='pokemon-and-details' >
                       <div className='pokemon-detail-name-container'>
-                        <h1 className='details-title'>{ pokemonDetail.name }</h1>
+                        <h1 className='details-title'>{ upperCaseFirstLetter(pokemonDetail?.name) }</h1>
                         <FavoriteButton />
                       </div>
-                      <img
-                        className='detail-image-container'
-                        src={ image } 
-                        alt={ pokemonDetail.name } />
+                      <div className="image-container-details">
+                        <img
+                          className='detail-image-container'
+                          src={ image } 
+                          alt={ pokemonDetail.name } />
+                      </div>
                       <div className='type-container'>
                         {
                           pokemonDetail.types?.map((type) => (
@@ -75,26 +82,29 @@ export default function PokémonDetail() {
                       <h2>Abilities</h2>
                       {
                         pokemonDetail.abilities?.map((abi) => 
-                          <p key={abi.ability.name}>{ abi.is_hidden === true ? `${abi.ability.name} (hidden)` : abi.ability.name }{}</p> )
+                          <p 
+                            className='ability' 
+                            key={abi.ability.name}>
+                              { abi.is_hidden === true ? `${upperCaseFirstLetter(abi.ability.name)} (hidden)` : upperCaseFirstLetter(abi.ability.name) }{}</p> )
                       }
-                      <p>Height:{' '}{ pokemonDetail.height/10 }{' '}{ 'm' }</p>
-                      <p>Weight{' '}{ pokemonDetail.weight/10 }{' '}{ 'kg' }</p>
+                      <p className='height-width'>Height:{' '}{ pokemonDetail.height/10 }{' '}{ 'm' }</p>
+                      <p className='height-width'>Weight{' '}{ pokemonDetail.weight/10 }{' '}{ 'kg' }</p>
                       </div>
                       
                        <div className='stats-container'>
                           {
                             pokemonDetail.stats?.map((stat) => (
                               <>
-                                <p>
+                                <p className='stats-title'>
                                   {
-                                     stat.stat.name 
+                                     upperCaseFirstLetter(stat.stat?.name) 
                                   }
                                 </p>
                                 <p 
                                   key={stat.stat.name}
                                   className='stats-bar'
                                   style={{width : `${stat.base_stat}%`}}
-                                >{  stat.base_stat }
+                                >
                                 </p>
                               </>)
                               )

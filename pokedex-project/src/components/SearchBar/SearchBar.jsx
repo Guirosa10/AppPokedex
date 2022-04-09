@@ -21,20 +21,23 @@ export default function SearchBar() {
         }
         populatePokemon(filteredPkms)
       }
+      else {
+        window.alert('Insira algum nome para começar a pesquisa')
+      }
   }
 
 
   return (
     <div className='search-container'>
         <input 
-            type='text' 
-            placeholder='Search for Pokemon' 
+            type='search' 
+            placeholder='Searching for a Pokémon?' 
             value={ searchInput }
-            onChange={ (e) => setSearchInput(e.target.value) }
+            onChange={ ({ target: { value } }) => setSearchInput(value) }
         />
         <input 
             type='button' 
-            value='Search Pokemon'
+            value='Search Pokémon'
             onClick={ fetchNextPokemon }
         />
     </div>
