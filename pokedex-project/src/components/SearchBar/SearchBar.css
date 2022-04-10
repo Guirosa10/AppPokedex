@@ -18,3 +18,12 @@ input {
     width: 25vh;
     font-size: large;
 }
+
+.search-button {
+    transition: box-shadow .3s;
+}
+
+.search-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+}

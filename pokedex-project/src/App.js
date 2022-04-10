@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import PokémonDetail from './Pages/PokémonDetail/PokémonDetail';
 import Favorites from './Pages/Favorites/Favorites';
+import BattlePage from './Pages/BattlePage/BattlePage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path='/search' element={ <SearchPage /> } />
           <Route exact path='/pokemon/:id' element={ <PokémonDetail /> } />
           <Route exact path='/favorites' element={ <Favorites /> } />
+          <Route exact path='/battle' element={ <BattlePage /> } />
         </Routes>
       </BrowserRouter>
     </Provider>

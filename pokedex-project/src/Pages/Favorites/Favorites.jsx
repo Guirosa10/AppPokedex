@@ -4,6 +4,14 @@ import Header from '../../components/Header/Header'
 
 export default function Favorites() {
   const pokemons = JSON.parse(localStorage.getItem('favoritePokemon')) || []
+
+  const upperCaseFirstLetter = (string) => {
+    if(string){
+     return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    return string;
+   }
+ 
   return (
     <>
         <Header />
@@ -11,7 +19,7 @@ export default function Favorites() {
         {
             pokemons && pokemons.map((pokemon) => (
                 <div className={`pokemon-card card-${pokemon.types[0]}`}>
-                    <Link to={`/pokemon/${pokemon.id}`}><h1>{ pokemon.name }</h1></Link>
+                    <Link to={`/pokemon/${pokemon.id}`}><h1>{ upperCaseFirstLetter(pokemon.name) }</h1></Link>
                     <h2>{ `#${pokemon.id}` }</h2>
                     <Link to={`/pokemon/${pokemon.id}`}>
                         <img 

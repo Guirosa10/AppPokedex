@@ -35,7 +35,8 @@ export default function SearchBar() {
             value={ searchInput }
             onChange={ ({ target: { value } }) => setSearchInput(value) }
         />
-        <input 
+        <input
+            className='search-button'
             type='button' 
             value='Search Pokémon'
             onClick={ fetchNextPokemon }

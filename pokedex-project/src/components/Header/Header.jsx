@@ -11,6 +11,7 @@ export default function Header() {
             <Link to='/'><li><button type='button'>Home</button></li></ Link>
             <Link to='/search'><li><button type='button'>Search</button></li></ Link>
             <Link to='/favorites'><li><button type='button'>Favorites</button></li></ Link>
+            <Link to='/battle'><li><button type='button'>Battle</button></li></Link>
         </ul>
     </header>
   )

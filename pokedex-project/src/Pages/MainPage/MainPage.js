@@ -47,14 +47,14 @@ export default function MainPage() {
         }
         {
             !loadingState && (
-                <>
+                <main>
                     <div className='pokedex-container'>
                         <PokémonCard />
                     </div>
                     <div className='next-container'>
                         <LoadNextButton setNext={ setNext } next={ next }/>
                     </div>
-                </>
+                </main>
             
             )
         }
