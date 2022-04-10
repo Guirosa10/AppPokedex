@@ -16,12 +16,21 @@ export default function PokémonDetail() {
   const [bio, setBio] = useState('')
  
   const fetchDetails = async () => {
-      const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => res.json());
-      const { flavor_text_entries } = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) => res.json());
-      setPokemonDetail(results);
-      setBio(flavor_text_entries[0].flavor_text);
-      const imageArtwork = results.sprites.other['official-artwork'].front_default;
-      setImage(imageArtwork);
+      if(id < 1127){
+        const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => res.json());
+        console.log(results);
+        const { flavor_text_entries } = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) => res.json());
+        setPokemonDetail(results);
+        setBio(flavor_text_entries[0].flavor_text);
+        const imageArtwork = results.sprites.other['official-artwork'].front_default;
+        setImage(imageArtwork);
+      }
+      else {
+        const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => res.json());
+        setPokemonDetail(results);
+        const imageArtwork = results.sprites.other['official-artwork'].front_default;
+        setImage(imageArtwork);
+      }
   }
 
  const upperCaseFirstLetter = (string) => {
@@ -75,10 +84,14 @@ export default function PokémonDetail() {
                     </div>
                     <div className='info-container'>
                       <div className="bio-container">
-                        <h2>Bio</h2>
-                      { 
-                        <p>{ bio.replace(//g, '') }</p> 
-                      }
+                        {
+                          bio && (
+                            <>
+                              <h2>Bio</h2>
+                              <p>{ bio.replace(//g, '') }</p>
+                            </>
+                          )
+                        }
                       <h2>Abilities</h2>
                       {
                         pokemonDetail.abilities?.map((abi) => 
