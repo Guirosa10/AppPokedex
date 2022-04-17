@@ -1,23 +1,16 @@
 import React, { useContext } from 'react';
 import MyContext from '../../Context/MyContext';
-import { fetchPokemonImage } from '../../services/PokemonFetch';
+import { fetchByIndex } from '../../services/PokedexFetch';
 import './LoadNextButton.css';
 
 export default function LoadNextButton({ setNext, next }) {
   const { pokemons, setPokemons } = useContext(MyContext);
 
   const fetchNextPokemon = async () => {
-    const results = await fetch(next).then((res) => res.json())
-    setNext(results.next)
-    const populatePokemon = (allPokemons) => {
-      allPokemons.forEach(async (pokemon) => {
-          const response = await fetchPokemonImage(pokemon.name)
-          setPokemons(allpokes => [...allpokes, response])
-      })
-    }
-    populatePokemon(results.results)
-    const sort = pokemons.sort((a,b) => a.id - b.id);
-    setPokemons(sort);
+    const results = await fetchByIndex(next);
+    setPokemons([...pokemons, ...results]);
+    setNext(next+20);
+  
   }
 
   return (

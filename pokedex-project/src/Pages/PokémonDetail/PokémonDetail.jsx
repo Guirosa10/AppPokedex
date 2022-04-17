@@ -40,9 +40,6 @@ export default function PokémonDetail() {
    return string;
   }
 
-
- 
-
   useEffect(() => {
     setLoadingState(true)
     fetchDetails()

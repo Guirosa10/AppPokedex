@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import MyContext from '../../Context/MyContext';
 import './FavoriteButton.css';
+import { Icon, icon } from '@iconify/react';
 
 export default function FavoriteButton() {
   const [favorites, setFavorites] = useState([]);
@@ -70,11 +71,7 @@ export default function FavoriteButton() {
           className="heart"
           alt='heart'
           /> : 
-          <img 
-            alt='favorited' 
-            src='https://cdn.icon-icons.com/icons2/2248/PNG/512/pokeball_icon_136305.png' 
-            className='favorited'
-          />
+          <span className='heartbutton'><Icon classname='fa-heart' icon="mdi:pokeball" style={{ fontSize: '60px' }}/></span>
       }
       
     </span>
