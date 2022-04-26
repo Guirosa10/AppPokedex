@@ -10,6 +10,6 @@ O Pokédex App é um aplicativo no qual você pode pesquisar seus pokémons favo
 - Na tela de Battle, você poderá batalhar com seus pokémons favoritos escolhidos, em um jogo no estilo Super Trunfo (parte ainda em desenvolvimento);
 
 ## Tecnologias Utilizadas
--React Hooks
--Html
--CSS
+-React Hooks__
+-Html__
+-CSS__
